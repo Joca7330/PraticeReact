@@ -3,24 +3,31 @@ import './SignInForm.css'
 
 const SignInForm = () => {
     return (
-        <div className='background'>
-            <div className='container'>
-                <div className='header'>Sign in</div>
-                <div className='subheader'>Enter your details to continue</div>
-                <div>
-                    <label htmlFor="Email">Email</label>
+        <div className='form-container'>
+            <div className='form'>
+                <div className='form-title'>Sign in</div>
+                <div className='form-subtitle'>Enter your details to continue</div>
+                <div className='label-container-1'>
+                    <label 
+                    className='email-label'
+                    htmlFor="Email">Email</label>
                     <input
+                    className='input-1'
                         type="Email"
                         id='Email'
                         placeholder='john@email.com'
                     />
                 </div>
-                <div>
-                    <label htmlFor="Password">Password</label>
+                <div className='label-container-1'>
+                    <label 
+                    className='password-label'
+                    htmlFor="Password">Password</label>
                     <input
+                    className='input-2'
                         type="Password"
                         id='Password'
                     />
+                    </div>
                     <div>
                         <h3>Forgot Password</h3>
                     </div>
@@ -30,7 +37,6 @@ const SignInForm = () => {
                     <button
                         type='submmit'
                         className='sign-in'>Sign In </button>
-                </div>
 
             </div>
         </div>
