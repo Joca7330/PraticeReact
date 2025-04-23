@@ -37,9 +37,10 @@
     margin-bottom: 45px;
     height: 15px;
     font-size: 12px;
+    font-weight: 500px;
 }
 
-.email-label {
+.label {
     color: #858FAD;
     /* border: purple solid 1px; */
     width: 35px;
@@ -50,7 +51,7 @@
     margin: 0px 0px 8px 12px;
 }
 
-.label-container-1 {
+.container {
     width: 362px;
     height: 71px;
     display: flex;
@@ -59,8 +60,8 @@
     margin-bottom: 24px;
 }
 
-.input-1 {
-background-color: #F3F2F8;
+.input {
+    background-color: #ededee;
     width: 362px;
     height: 48px;
     border-radius: 12px;
@@ -69,23 +70,15 @@ background-color: #F3F2F8;
 
 }
 
-.password-label {
-    color: #858FAD;
-    /* border: purple solid 1px; */
-    width: 35px;
-    height: 15px;
-    font-weight: 600px;
-    font-size: 12px;
-    line-height: 15px;
-    margin: 0px 0px 8px 12px;
-}
-
-.input-2 {
-background-color: #F3F2F8;
-    width: 362px;
-    height: 48px;
-    border-radius: 12px;
+.forgot-password {
+    color: #5E50BF;
+    font-size: 14px;
+    margin: 0px 39px 24px 0px;
     border: none;
-    /* border: greenyellow solid 1px; */
+    align-self: flex-end;
+    cursor: pointer;
+}
+.btn {
+border: gold solid 1px;
 
 }
