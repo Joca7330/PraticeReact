@@ -5,27 +5,27 @@ import { IoIosEyeOff } from "react-icons/io";
 
 const SignInForm = () => {
     return (
-        <div className='form-container'>
-            <div className='form'>
-                <div className='form-title'>Sign in</div>
-                <div className='form-subtitle'>Enter your details to continue</div>
-                <div className='container'>
+        <div className='signin-container'>
+            <div className='signin-card'>
+                <div className='signin-title'>Sign in</div>
+                <div className='signin-instructions'>Enter your details to continue</div>
+                <div className='signin-input-label'>
                     <label
-                        className='label'
+                        className='signin-label'
                         htmlFor="Email">Email</label>
                     <input
-                        className='input'
+                        className='signin-input'
                         type="Email"
                         id='Email'
                         placeholder='john@email.com'
                     />
                 </div>
-                <div className='container'>
+                <div className='signin-input-label'>
                     <label
-                        className='label'
+                        className='signin-label'
                         htmlFor="Password">Password</label>
                     <input
-                        className='input'
+                        className='signin-input'
                         type="password"
                         id='Password'
                         placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
@@ -38,14 +38,14 @@ const SignInForm = () => {
                     <IoIosEyeOff />
                 </div> */}
                 </div>
-                <button className='forgot-password'>Forgot password?</button>
+                <button className='signin-password-reset'>Forgot password?</button>
                 <button
                     type='submmit'
-                    className='btn'>Sign In
+                    className='signin-submit-btn'>Sign In
                 </button>
-                <button className='sign-up'>
-                    <div className='text-1'>Don't have an account?</div>
-                    <div className='text-2'>Sign up</div>
+                <button className='signin-signup-link'>
+                    <div className='signin-account-query'>Don't have an account?</div>
+                    <div className='signin'>Sign up</div>
                 </button>
             </div>
 
