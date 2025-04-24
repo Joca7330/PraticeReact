@@ -28,7 +28,7 @@
     font-size: 30px;
     line-height: 20px;
     /* border: green solid 1px; */
-    margin: 46px 166px 16px 166px;
+    margin: 46px 0px 16px 0px;
 }
 
 .form-subtitle {
@@ -56,8 +56,9 @@
     height: 71px;
     display: flex;
     flex-direction: column;
-    /* border: hotpink solid 1px; */
+    border: hotpink solid 1px;
     margin-bottom: 24px;
+    position: relative;
 }
 
 .input {
@@ -67,6 +68,7 @@
     border-radius: 12px;
     border: none;
     /* border: greenyellow solid 1px; */
+    padding: 17px 0px 16px 19px;
 
 }
 
@@ -78,7 +80,59 @@
     align-self: flex-end;
     cursor: pointer;
 }
-.btn {
-border: gold solid 1px;
 
+.btn {
+    /* border: gold solid 1px; */
+    border: none;
+    color: #FFFFFF;
+    width: 362px;
+    height: 48px;
+    border-radius: 24px 0px 24px 24px;
+    font-size: 16px;
+    font-weight: 600px;
+    background-color: #5E50BF;
 }
+
+.sign-up {
+    /* border: green solid 1px; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* text-align: center; */
+    /* width: 100%; */
+    border: none;
+    height: 37px;
+    margin: 64px 0px 28px 0px;
+}
+
+.text-1 {
+    color: #858FAD;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.text-2 {
+    color: #5E50BF;
+    font-size: 14px;
+}
+/* 
+.react-icon {
+    position: absolute;
+    display: flex;
+    width: 100%;
+height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    right: 10px;
+    border: orange solid 1px;
+} */
+ 
+.react-icon {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    bottom: 0;
+    /* Simple flexbox centering */
+    display: flex;
+    align-items: center; /* Centers vertically */
+    /* justify-content: center would center horizontally, but we don't want that */
+  }

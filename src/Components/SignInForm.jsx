@@ -1,5 +1,7 @@
 import React from 'react'
 import './SignInForm.css'
+import { IoIosEyeOff } from "react-icons/io";
+
 
 const SignInForm = () => {
     return (
@@ -24,14 +26,26 @@ const SignInForm = () => {
                         htmlFor="Password">Password</label>
                     <input
                         className='input'
-                        type="Password"
+                        type="password"
                         id='Password'
+                        placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
                     />
+                    <div className='react-icon'>
+                        <IoIosEyeOff />
+                    </div>
+
+                    {/* <div>
+                    <IoIosEyeOff />
+                </div> */}
                 </div>
                 <button className='forgot-password'>Forgot password?</button>
                 <button
                     type='submmit'
                     className='btn'>Sign In
+                </button>
+                <button className='sign-up'>
+                    <div className='text-1'>Don't have an account?</div>
+                    <div className='text-2'>Sign up</div>
                 </button>
             </div>
 
