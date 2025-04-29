@@ -1,5 +1,8 @@
 import React from 'react'
 import './SignUpForm.css'
+import { MdOutlineCalendarMonth } from "react-icons/md";
+import { MdOutlineVisibilityOff } from "react-icons/md";
+
 
 const SignUpForm = () => {
     return (
@@ -26,6 +29,9 @@ const SignUpForm = () => {
                         type="text"
                         id='date'
                         placeholder='Jan, 12 1980' />
+                    <span className='calendar-icon'>
+                        <MdOutlineCalendarMonth />
+                    </span>
                 </div>
                 <div className='signup-input-label'>
                     <label
@@ -46,6 +52,9 @@ const SignUpForm = () => {
                         type="password"
                         id='password'
                         placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;' />
+                    <span className='password-visibility'>
+                        <MdOutlineVisibilityOff />
+                    </span>
                 </div>
                 <div className='signup-input-label'>
                     <label
@@ -56,6 +65,9 @@ const SignUpForm = () => {
                         type="password"
                         id='confirm-password'
                         placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;' />
+                    <span className='password-visibility'>
+                        <MdOutlineVisibilityOff />
+                    </span>
                 </div>
                 <button className='signup-submit-btn'>Sign Up</button>
                 <button className='signup-account-signin'>

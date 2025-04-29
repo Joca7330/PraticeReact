@@ -13,14 +13,13 @@
 .signin-card {
     background-color: #FAFAFA;
     /* border: blue solid 3px; */
-    /* padding: 20px;  */
     width: 440px;
     height: 548px;
     border-radius: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* box-shadow: 2px 4px 24px 0px #5E50BF0D; */
+    padding: 46px 39px 28px 39px;
 
 }
 
@@ -28,9 +27,9 @@
     color: #0E1E40;
     font-weight: 500px;
     font-size: 30px;
-    line-height: 20px;
+    /* line-height: 20px; */
     /* border: green solid 1px; */
-    margin: 46px 0px 16px 0px;
+    margin-bottom: 16px;
 }
 
 .signin-instructions {
@@ -49,7 +48,6 @@
     height: 15px;
     font-weight: 600px;
     font-size: 12px;
-    line-height: 15px;
     margin: 0px 0px 8px 12px;
 }
 
@@ -94,18 +92,18 @@
     font-weight: 600px;
     background-color: #5E50BF;
     cursor: pointer;
+    margin-bottom: 80px;
 }
 
 .signin-signup-link {
     /* border: green solid 1px; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* text-align: center; */
-    /* width: 100%; */
     border: none;
-    cursor: pointer;
+    /* cursor: pointer; */
     height: 37px;
-    margin: 64px 0px 28px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: #FAFAFA; */
 }
 
 .signin-account-query {
@@ -117,7 +115,9 @@
 .signin-signup-text {
     color: #5E50BF;
     font-size: 14px;
+    cursor: pointer;
 }
+
 /* 
 .react-icon {
     position: absolute;
@@ -129,14 +129,10 @@ height: 100%;
     right: 10px;
     border: orange solid 1px;
 } */
- 
-.react-icon {
+
+.password-visibility{
     position: absolute;
-    right: 20px;
-    top: 0;
-    bottom: 0;
-    /* Simple flexbox centering */
-    display: flex;
-    align-items: center; /* Centers vertically */
-    /* justify-content: center would center horizontally, but we don't want that */
-  }
+    right: 0px;
+    top: 40px;
+    color: #858FAD;
+}

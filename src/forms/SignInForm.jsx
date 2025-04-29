@@ -30,7 +30,7 @@ const SignInForm = () => {
                         id='Password'
                         placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
                     />
-                    <div className='react-icon'>
+                    <div className='password-visibility'>
                         <IoIosEyeOff />
                     </div>
 
@@ -38,15 +38,15 @@ const SignInForm = () => {
                     <IoIosEyeOff />
                 </div> */}
                 </div>
-                <button className='signin-password-reset'>Forgot password?</button>
+                <div className='signin-password-reset'>Forgot password?</div>
                 <button
                     type='submmit'
                     className='signin-submit-btn'>Sign In
                 </button>
-                <button className='signin-signup-link'>
+                <div className='signin-signup-link'>
                     <div className='signin-account-query'>Don't have an account?</div>
-                    <div className='signin'>Sign up</div>
-                </button>
+                    <div className='signin-signup-text'>Sign up</div>
+                </div>
             </div>
 
         </div>

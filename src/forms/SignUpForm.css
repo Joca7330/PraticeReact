@@ -5,7 +5,7 @@
 
 .signup-container {
     background-color: #2a2a2a;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,17 +41,19 @@
 }
 
 .signup-input-label {
-    /* border: green solid 1px; */
+    /* border: green solid 1px */
     width: 362px;
     height: 71px;
     display: flex;
     flex-direction: column;
     margin-bottom: 24px;
+    position: relative;
 }
+
 ::placeholder {
-    color: rgba(0, 0, 0, 0.2); 
-  }
-  
+    color: rgba(0, 0, 0, 0.2);
+}
+
 
 .signup-label {
     /* border: orange solid 1px; */
@@ -109,4 +111,13 @@
     width: 157px;
     height: 37px;
     font-size: 14px;
+}
+
+.calendar-icon {
+    /* border: solid red 1px; */
+    position: absolute;
+    color: #858FAD;
+    right: 0px;
+    top: 40px;
+
 }
