@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './SignInForm.css'
 import { IoIosEyeOff } from "react-icons/io";
 
 
-const SignInForm = () => {
+const SignInForm = ({ onLogin }) => {
+
     return (
         <div className='signin-container'>
             <div className='signin-card'>
@@ -33,13 +34,10 @@ const SignInForm = () => {
                     <div className='password-visibility'>
                         <IoIosEyeOff />
                     </div>
-
-                    {/* <div>
-                    <IoIosEyeOff />
-                </div> */}
                 </div>
                 <div className='signin-password-reset'>Forgot password?</div>
                 <button
+                    onClick={onLogin}
                     type='submmit'
                     className='signin-submit-btn'>Sign In
                 </button>

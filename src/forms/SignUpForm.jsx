@@ -4,7 +4,7 @@ import { MdOutlineCalendarMonth } from "react-icons/md";
 import { MdOutlineVisibilityOff } from "react-icons/md";
 
 
-const SignUpForm = () => {
+const SignUpForm = ({ onLogout }) => {
     return (
         <div className='signup-container'>
             <div className='signup-card'>
@@ -26,7 +26,7 @@ const SignUpForm = () => {
                         htmlFor="date">Date of birth</label>
                     <input
                         className='signup-input'
-                        type="text"
+                        type="date"
                         id='date'
                         placeholder='Jan, 12 1980' />
                     <span className='calendar-icon'>
@@ -39,7 +39,7 @@ const SignUpForm = () => {
                         htmlFor="email">Email</label>
                     <input
                         className='signup-input'
-                        type="text"
+                        type="email"
                         id='email'
                         placeholder='john@email.com' />
                 </div>
@@ -69,7 +69,9 @@ const SignUpForm = () => {
                         <MdOutlineVisibilityOff />
                     </span>
                 </div>
-                <button className='signup-submit-btn'>Sign Up</button>
+                <button
+                    onClick={onLogout}
+                    className='signup-submit-btn'>Sign Up</button>
                 <button className='signup-account-signin'>
                     <div className='signup-account-query'>Already have an account?</div>
                     <div className='signup-signin-link'>Sign In</div>
