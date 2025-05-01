@@ -132,7 +132,7 @@ height: 100%;
 
 .password-visibility{
     position: absolute;
-    right: 0px;
+    right: -9px;
     top: 40px;
     color: #858FAD;
     cursor: pointer;
