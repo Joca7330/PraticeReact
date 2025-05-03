@@ -8,16 +8,31 @@ import { FaEye } from "react-icons/fa";
 const SignUpForm = ({ onLogout }) => {
 
     const [showPasswordSignUp, setShowPasswordSignUp] = useState(false)
-    // console.log('show password:', showPasswordSignUp);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-    console.log('confirm password:', showConfirmPassword);
+
+    const [formData, setFormData] = useState({
+        username: '',
+        dateOfBirth: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+    })
+    console.log('state', formData);
+
+
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setFormData(prevState => ({
+            ...prevState, [name]:value
+        })) 
+    }
+
+    // Get the value of what the user types into the input field
     const toggleShowPassword = () => {
         setShowPasswordSignUp(prevState => !prevState)
     }
     const toggleConfirmPassword = () => {
         setShowConfirmPassword(prevState => !prevState)
-    }
-    const toggleDate = () => {
     }
 
     return (
@@ -33,7 +48,11 @@ const SignUpForm = ({ onLogout }) => {
                         className='signup-input'
                         type="text"
                         id='name'
-                        placeholder='John Doe' />
+                        placeholder='John Doe'
+                        name='username'
+                        onChange={handleChange}
+                    />
+
                     <div>
                         there is an error
                     </div>
@@ -46,7 +65,10 @@ const SignUpForm = ({ onLogout }) => {
                         className='signup-input'
                         type="date"
                         id='date'
-                        placeholder='Jan, 12 1980' />
+                        placeholder='Jan, 12 1980'
+                        name='dateOfBirth'
+                        onChange={handleChange}
+                    />
                 </div>
                 <div className='signup-input-label'>
                     <label
@@ -56,7 +78,10 @@ const SignUpForm = ({ onLogout }) => {
                         className='signup-input'
                         type="email"
                         id='email'
-                        placeholder='john@email.com' />
+                        placeholder='john@email.com'
+                        name='email'
+                        onChange={handleChange}
+                    />
                 </div>
                 <div className='signup-input-label'>
                     <label
@@ -67,13 +92,19 @@ const SignUpForm = ({ onLogout }) => {
                             className='signup-input'
                             type="text"
                             id='password'
-                            placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;' />
+                            placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
+                            name='password'
+                            onChange={handleChange}
+                        />
                         :
                         <input
                             className='signup-input'
                             type="password"
                             id='password'
-                            placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;' />
+                            name='password'
+                            placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
+                            onChange={handleChange}
+                        />
                     }
                     {showPasswordSignUp ?
                         <span className='password-visibility'>
@@ -98,13 +129,19 @@ const SignUpForm = ({ onLogout }) => {
                             className='signup-input'
                             type="text"
                             id='confirm-password'
-                            placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;' />
+                            placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
+                            name='confirmPassword'
+                            onChange={handleChange}
+                        />
                         :
                         <input
                             className='signup-input'
                             type="password"
                             id='confirm-password'
-                            placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;' />
+                            placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
+                            name='confirmPassword'
+                            onChange={handleChange}
+                        />
                     }
                     {showConfirmPassword ?
                         <span className='password-visibility'>
@@ -115,7 +152,7 @@ const SignUpForm = ({ onLogout }) => {
                         :
                         <span className='password-visibility'>
                             <FaEye
-                            onClick={toggleConfirmPassword}
+                                onClick={toggleConfirmPassword}
                             />
                         </span>
                     }
@@ -124,9 +161,9 @@ const SignUpForm = ({ onLogout }) => {
                     className='signup-submit-btn'>Sign Up</button>
                 <button className='signup-account-signin'>
                     <div className='signup-account-query'>Already have an account?</div>
-                    <div 
-                    onClick={onLogout}
-                    className='signup-signin-link'>
+                    <div
+                        onClick={onLogout}
+                        className='signup-signin-link'>
                         <div>Sign in</div>
                     </div>
                 </button>
@@ -136,3 +173,13 @@ const SignUpForm = ({ onLogout }) => {
 }
 
 export default SignUpForm
+
+
+
+
+
+
+
+
+
+

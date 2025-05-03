@@ -5,14 +5,12 @@ import SignUpForm from './forms/SignUpForm'
 import DetailsToggle from './conditional-rendering/AuthForms'
 import ToggleLogin from './conditional-rendering/ToggleLogin'
 import OneToggleLogin from './conditional-rendering/OneToggleLogin'
-import Child from './props/Child'
-import { useRef } from 'react'
-
-
+import LoginForm from './form-validation/TestForm1'
+import FormValidation from './form-validation/TestForm2'
 
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
   const handleLogIn = () => {
     setIsLoggedIn(true);
   }
@@ -25,15 +23,40 @@ const App = () => {
       <div className='form-2-container'>
         {!isLoggedIn ?
           <div>
-            <SignInForm 
-            isLoggedIn={isLoggedIn}
-            onLogin={handleLogIn} />
+            <SignInForm
+              isLoggedIn={isLoggedIn}
+              onLogin={handleLogIn} />
           </div>
           : <SignUpForm onLogout={handleLogOut} />}
-
       </div>
     </div>
   )
 }
+
+
+// function App() {
+//   const [isSignUp, setIsSignUp] = useState(false)
+//   const handleLoginSuccess = (userData) => {
+//     // Handle successful login (e.g., store user data, redirect)
+//     console.log('Login successful!', userData);
+//   };
+//   return (
+//     <div className="app">
+//       {isSignUp ?
+//         <div>
+//           <h1>Welcome to My App</h1>
+//           <LoginForm
+//             onLoginSuccess={handleLoginSuccess}
+//             buttonText="Sign In"
+//           />
+//         </div>
+//         :
+//         <FormValidation />
+//       }
+//     </div>
+//   );
+// }
+
+
 
 export default App
