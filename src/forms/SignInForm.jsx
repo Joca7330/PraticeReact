@@ -6,10 +6,38 @@ import { FaEye } from "react-icons/fa";
 
 const SignInForm = ({ onLogin }) => {
 
-    const [showPasswordLogin, setShowPasswordLogin] = useState(false)
-    console.log('state', showPasswordLogin);
+    const [showPasswordLogin, setShowPasswordLogin] = useState(false);
 
-    
+    const [showErrorLogin, setShowErrorLogin] = useState({
+        email: '',
+        password: ''
+    })
+    console.log('show errors:', showErrorLogin);
+
+    const [formDataLogin, setFormDataLogin] = useState({
+        email: '',
+        password: ''
+    });
+    console.log('user input:', formDataLogin);
+
+    const handleValidationLogin = () => {
+        const tempErrorsLogin = {};
+
+        if (formDataLogin.email === '') {
+            tempErrorsLogin.email = 'Email can not be blank'
+        } if (formDataLogin.password === '') {
+            tempErrorsLogin.password = 'Password can not be blank'
+            console.log('temp errors:', tempErrorsLogin);
+        }
+        setShowErrorLogin(tempErrorsLogin)
+    }
+
+    const handleChangeLogin = (e) => {
+        const { name, value } = e.target
+        setFormDataLogin(prevState => ({
+            ...prevState, [name]: value
+        }))
+    }
 
     const togglePassword = () => {
         setShowPasswordLogin(prevState => !prevState)
@@ -28,7 +56,15 @@ const SignInForm = ({ onLogin }) => {
                         type="Email"
                         id='Email'
                         placeholder='john@email.com'
+                        name='email'
+                        onChange={handleChangeLogin}
+                        onBlur={handleValidationLogin}
                     />
+                    <div className='error-text'>
+                        {showErrorLogin.email
+                            &&
+                            showErrorLogin.email}
+                    </div>
                 </div>
                 <div className='signin-input-label'>
                     <label
@@ -40,6 +76,9 @@ const SignInForm = ({ onLogin }) => {
                             type="text"
                             id='Password'
                             placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
+                            name='password'
+                            onChange={handleChangeLogin}
+                            onBlur={handleValidationLogin}
                         />
                         :
                         <input
@@ -47,8 +86,16 @@ const SignInForm = ({ onLogin }) => {
                             type="password"
                             id='Password'
                             placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
+                            name='password'
+                            onChange={handleChangeLogin}
+                            onBlur={handleValidationLogin}
                         />
                     }
+                    <div className='error-text'>
+                        {showErrorLogin.password
+                            &&
+                            showErrorLogin.password}
+                    </div>
                     {showPasswordLogin ?
                         <div className='password-visibility'>
                             <IoIosEyeOff

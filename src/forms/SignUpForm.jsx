@@ -11,29 +11,31 @@ const SignUpForm = ({ onLogout }) => {
     // Stores error messages for each input field
     const [showError, setShowError] = useState({
         username: '',
+        dateOfBirth: '',
         email: '',
         password: '',
         confirmPassword: ''
     })
-    console.log('error state:', showError);
     // Checks if user input is in valid format
     const handleValidation = () => {
         // Detects if there are any errors and sends to showErrors state
         const tempErrors = {};
         // Error messages are stored in tempErrors if fields are left blank
         if (formData.username === '') {
-            tempErrors.username = 'username can not be empty'
-        } if (formData.email === '') {
-            tempErrors.email = 'email can not be empty'
+            tempErrors.username = 'Full name can not be empty'
+        } if (formData.dateOfBirth === '') {
+            tempErrors.dateOfBirth = 'Date of birth can not be empty'
+        }
+        if (formData.email === '') {
+            tempErrors.email = 'Email can not be empty'
         } if (formData.password === '') {
-            tempErrors.password = 'password can not be empty'
+            tempErrors.password = 'Password can not be empty'
         } if (formData.confirmPassword === '') {
-            tempErrors.confirmPassword = 'confirm password can not be empty'
+            tempErrors.confirmPassword = 'Confirm password can not be empty'
         }
         // console.log('temp errors:', tempErrors.username, tempErrors.password, tempErrors.email, tempErrors.confirmPassword);
         // Updates showErrors stae with error messages
         setShowError(tempErrors)
-        console.log('temp errors:', tempErrors);
         // e.preventDefault()
     }
     const [formData, setFormData] = useState({
@@ -43,15 +45,13 @@ const SignUpForm = ({ onLogout }) => {
         password: '',
         confirmPassword: ''
     })
-    console.log('user input:', formData);
-
+    // Updates the new formData with the old data when changes are made to the input field
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData(prevState => ({
             ...prevState, [name]: value
         }))
     }
-
     // Get the value of what the user types into the input field
     const toggleShowPassword = () => {
         setShowPasswordSignUp(prevState => !prevState)
@@ -59,13 +59,6 @@ const SignUpForm = ({ onLogout }) => {
     const toggleConfirmPassword = () => {
         setShowConfirmPassword(prevState => !prevState)
     }
-
-    // const handleChangeAndValidate = (e) => {
-    //     handleChange(e)
-    //     handleValidation()
-    // }
-    // console.log('handlers:', handleChangeAndValidate);
-
     return (
         <div className='signup-container'>
             <div className='signup-card'>
@@ -84,8 +77,10 @@ const SignUpForm = ({ onLogout }) => {
                         onChange={handleChange}
                         onBlur={handleValidation}
                     />
-                    <div>
-                        there is an error
+                    <div className='error-text'>
+                        {showError.username
+                            &&
+                            showError.username}
                     </div>
                 </div>
                 <div className='signup-input-label'>
@@ -99,7 +94,13 @@ const SignUpForm = ({ onLogout }) => {
                         placeholder='Jan, 12 1980'
                         name='dateOfBirth'
                         onChange={handleChange}
+                        onBlur={handleValidation}
                     />
+                    <div className='error-text'>
+                        {showError.dateOfBirth
+                            &&
+                            showError.dateOfBirth}
+                    </div>
                 </div>
                 <div className='signup-input-label'>
                     <label
@@ -114,6 +115,11 @@ const SignUpForm = ({ onLogout }) => {
                         onChange={handleChange}
                         onBlur={handleValidation}
                     />
+                    <div className='error-text'>
+                        {showError.email
+                            &&
+                            showError.email}
+                    </div>
                 </div>
                 <div className='signup-input-label'>
                     <label
@@ -140,6 +146,11 @@ const SignUpForm = ({ onLogout }) => {
                             onBlur={handleValidation}
                         />
                     }
+                    <div className='error-text'>
+                        {showError.password
+                            &&
+                            showError.password}
+                    </div>
                     {showPasswordSignUp ?
                         <span className='password-visibility'>
                             <MdOutlineVisibilityOff
@@ -166,6 +177,7 @@ const SignUpForm = ({ onLogout }) => {
                             placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
                             name='confirmPassword'
                             onChange={handleChange}
+                            onBlur={handleValidation}
                         />
                         :
                         <input
@@ -175,8 +187,14 @@ const SignUpForm = ({ onLogout }) => {
                             placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
                             name='confirmPassword'
                             onChange={handleChange}
+                            onBlur={handleValidation}
                         />
                     }
+                    <div className='error-text'>
+                        {showError.confirmPassword
+                            &&
+                            showError.confirmPassword}
+                    </div>
                     {showConfirmPassword ?
                         <span className='password-visibility'>
                             <MdOutlineVisibilityOff

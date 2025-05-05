@@ -6,11 +6,11 @@ import DetailsToggle from './conditional-rendering/AuthForms'
 import ToggleLogin from './conditional-rendering/ToggleLogin'
 import OneToggleLogin from './conditional-rendering/OneToggleLogin'
 import LoginForm from './test-forms/TestForm1'
-import FormValidation from './forms/FormValidation'
+
 
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const handleLogIn = () => {
     setIsLoggedIn(true);
   }
@@ -30,7 +30,6 @@ const App = () => {
           </div>
           : <SignUpForm
             onLogout={handleLogOut} />}
-        <FormValidation />
       </div>
     </div>
   )

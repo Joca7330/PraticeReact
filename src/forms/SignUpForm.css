@@ -121,6 +121,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 
+.error-text {
+    color: red;
+    font-size: 12px;
+    padding: 4px 0px 8px 13px;
+
+}
+
 /* .calendar-icon {
     position: absolute;
     color: #858FAD;
