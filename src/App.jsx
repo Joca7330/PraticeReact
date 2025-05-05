@@ -5,8 +5,8 @@ import SignUpForm from './forms/SignUpForm'
 import DetailsToggle from './conditional-rendering/AuthForms'
 import ToggleLogin from './conditional-rendering/ToggleLogin'
 import OneToggleLogin from './conditional-rendering/OneToggleLogin'
-import LoginForm from './form-validation/TestForm1'
-import FormValidation from './form-validation/TestForm2'
+import LoginForm from './test-forms/TestForm1'
+import FormValidation from './forms/FormValidation'
 
 
 const App = () => {
@@ -18,6 +18,7 @@ const App = () => {
     setIsLoggedIn(false);
   }
 
+
   return (
     <div className='backdrop'>
       <div className='form-2-container'>
@@ -27,7 +28,9 @@ const App = () => {
               isLoggedIn={isLoggedIn}
               onLogin={handleLogIn} />
           </div>
-          : <SignUpForm onLogout={handleLogOut} />}
+          : <SignUpForm
+            onLogout={handleLogOut} />}
+        <FormValidation />
       </div>
     </div>
   )
