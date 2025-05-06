@@ -10,7 +10,7 @@ import LoginForm from './test-forms/TestForm1'
 
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
   const handleLogIn = () => {
     setIsLoggedIn(true);
   }

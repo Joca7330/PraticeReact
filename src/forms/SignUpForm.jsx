@@ -16,12 +16,24 @@ const SignUpForm = ({ onLogout }) => {
         password: '',
         confirmPassword: ''
     })
+    console.log('error state:', showError);
+
+    const handleSubmit = () => {
+        handleValidation()
+        if (showError.username || showError.password || showError.email || showError.confirmPassword || showError.dateOfBirth) {
+            console.log('There is an error message');
+        } else {
+            console.log('Form was submitted');
+        }
+    }
     // Checks if user input is in valid format
     const handleValidation = () => {
         // Detects if there are any errors and sends to showErrors state
         const tempErrors = {};
         // Error messages are stored in tempErrors if fields are left blank
-        if (formData.username === '') {
+        if (formData.username.length <= 3) {
+            tempErrors.username = 'Full name is too short'
+        } if (formData.username === '') {
             tempErrors.username = 'Full name can not be empty'
         } if (formData.dateOfBirth === '') {
             tempErrors.dateOfBirth = 'Date of birth can not be empty'
@@ -210,8 +222,10 @@ const SignUpForm = ({ onLogout }) => {
                     }
                 </div>
                 <button
+                    onClick={handleSubmit}
                     className='signup-submit-btn'>Sign Up</button>
-                <button className='signup-account-signin'>
+                <button
+                    className='signup-account-signin'>
                     <div className='signup-account-query'>Already have an account?</div>
                     <div
                         onClick={onLogout}
