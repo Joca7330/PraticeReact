@@ -16,39 +16,56 @@ const SignUpForm = ({ onLogout }) => {
         password: '',
         confirmPassword: ''
     })
-    console.log('error state:', showError);
-
+    // Checks if form is valid and display message in console when sign up button is clicked
     const handleSubmit = () => {
-        handleValidation()
-        if (showError.username || showError.password || showError.email || showError.confirmPassword || showError.dateOfBirth) {
-            console.log('There is an error message');
+        if (handleValidation()) {
+            console.log('Form has been submitted');
         } else {
-            console.log('Form was submitted');
+            console.log('Error submitting form');
         }
     }
     // Checks if user input is in valid format
     const handleValidation = () => {
+        const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         // Detects if there are any errors and sends to showErrors state
         const tempErrors = {};
         // Error messages are stored in tempErrors if fields are left blank
         if (formData.username.length <= 3) {
             tempErrors.username = 'Full name is too short'
-        } if (formData.username === '') {
+        }
+        if (formData.username === '') {
             tempErrors.username = 'Full name can not be empty'
-        } if (formData.dateOfBirth === '') {
+        }
+        if (formData.dateOfBirth === '') {
             tempErrors.dateOfBirth = 'Date of birth can not be empty'
+        }
+        if (!emailRegex.test(formData.email)) {
+            tempErrors.email = 'Please enter a valid email address (name@example.com)'
         }
         if (formData.email === '') {
             tempErrors.email = 'Email can not be empty'
-        } if (formData.password === '') {
+        }
+        if (!passRegex.test(formData.password)) {
+            tempErrors.password = 'Password must be 8+ chars with A-Z, a-z, 0-9, and symbol '
+        }
+        if (formData.password === '') {
             tempErrors.password = 'Password can not be empty'
-        } if (formData.confirmPassword === '') {
+        }
+        if (formData.password !== formData.confirmPassword) {
+            tempErrors.confirmPassword = 'Passwords do not match'
+        }
+        if (formData.confirmPassword === '') {
             tempErrors.confirmPassword = 'Confirm password can not be empty'
         }
-        // console.log('temp errors:', tempErrors.username, tempErrors.password, tempErrors.email, tempErrors.confirmPassword);
         // Updates showErrors stae with error messages
         setShowError(tempErrors)
-        // e.preventDefault()
+        console.log('temp errors:', tempErrors);
+        if (Object.keys(tempErrors).length === 0) {
+            return true
+        } else {
+            return false
+        }
     }
     const [formData, setFormData] = useState({
         username: '',
@@ -87,7 +104,6 @@ const SignUpForm = ({ onLogout }) => {
                         placeholder='John Doe'
                         name='username'
                         onChange={handleChange}
-                        onBlur={handleValidation}
                     />
                     <div className='error-text'>
                         {showError.username
@@ -106,7 +122,6 @@ const SignUpForm = ({ onLogout }) => {
                         placeholder='Jan, 12 1980'
                         name='dateOfBirth'
                         onChange={handleChange}
-                        onBlur={handleValidation}
                     />
                     <div className='error-text'>
                         {showError.dateOfBirth
@@ -125,7 +140,6 @@ const SignUpForm = ({ onLogout }) => {
                         placeholder='john@email.com'
                         name='email'
                         onChange={handleChange}
-                        onBlur={handleValidation}
                     />
                     <div className='error-text'>
                         {showError.email
@@ -145,7 +159,6 @@ const SignUpForm = ({ onLogout }) => {
                             placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
                             name='password'
                             onChange={handleChange}
-                            onBlur={handleValidation}
                         />
                         :
                         <input
@@ -155,7 +168,6 @@ const SignUpForm = ({ onLogout }) => {
                             name='password'
                             placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
                             onChange={handleChange}
-                            onBlur={handleValidation}
                         />
                     }
                     <div className='error-text'>
@@ -189,7 +201,6 @@ const SignUpForm = ({ onLogout }) => {
                             placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
                             name='confirmPassword'
                             onChange={handleChange}
-                            onBlur={handleValidation}
                         />
                         :
                         <input
@@ -199,7 +210,6 @@ const SignUpForm = ({ onLogout }) => {
                             placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
                             name='confirmPassword'
                             onChange={handleChange}
-                            onBlur={handleValidation}
                         />
                     }
                     <div className='error-text'>
