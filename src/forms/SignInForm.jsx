@@ -112,6 +112,7 @@ const SignInForm = ({ onLogin }) => {
                 </div>
                 <div className='signin-password-reset'>Forgot password?</div>
                 <button
+
                     type='submmit'
                     className='signin-submit-btn'>Sign In
                 </button>
