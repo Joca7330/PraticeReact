@@ -17,19 +17,28 @@ const App = () => {
   }
 
   return (
-
-
- 
     <BrowserRouter>
-      <div className='backdrop'>
-        <div className='form-2-container'>
-          <Routes>
-            <Route path='/signin' element={<SignInForm />} />
-            <Route path='/signup' element={<SignUpForm />} />
-          </Routes>
-        </div>
-      </div>
+      <Routes>
+        <Route
+          path='/signin'
+          element={
+            <SignInForm
+              isLoggedIn={isLoggedIn}
+              onLogin={handleLogIn}
+            />
+          }
+        />
+        <Route
+          path='/signup'
+          element={
+            <SignUpForm
+              onLogout={handleLogOut}
+            />
+          }
+        />
+      </Routes>
     </BrowserRouter>
+
   )
 }
 
