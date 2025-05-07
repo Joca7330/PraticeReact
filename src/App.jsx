@@ -17,25 +17,46 @@ const App = () => {
   }
 
   return (
+
+
+ 
     <BrowserRouter>
       <div className='backdrop'>
         <div className='form-2-container'>
-          {/* Define your Routes */}
           <Routes>
-            {/* Route for /signin */}
-            <Route path="/signin" element={
-              !isLoggedIn ? 
-                <SignInForm isLoggedIn={isLoggedIn} onLogin={handleLogIn} /> : 
-                <SignUpForm onLogout={handleLogOut} />
-            } />
-            {/* Route for /signup */}
-            <Route path="/signup" element={<SignUpForm onLogout={handleLogOut} />} />
-            {/* Other routes can be added as needed */}
+            <Route path='/signin' element={<SignInForm />} />
+            <Route path='/signup' element={<SignUpForm />} />
           </Routes>
         </div>
       </div>
     </BrowserRouter>
   )
 }
+
+
+
+
+//     <BrowserRouter>
+//       <div className='backdrop'>
+//         <div className='form-2-container'>
+//           {/* Define your Routes */}
+//           <Routes>
+//             {/* Route for /signin */}
+//             <Route path="/signin" element=
+//             {
+//               <SignInForm />
+//               // !isLoggedIn ? 
+//               //   <SignInForm isLoggedIn={isLoggedIn} onLogin={handleLogIn} /> : 
+//               //   <SignUpForm onLogout={handleLogOut} />
+//             } />
+//             {/* Route for /signup */}
+//             <Route path="/signup" element={<SignUpForm onLogout={handleLogOut} />} />
+//             {/* Other routes can be added as needed */}
+//           </Routes>
+//         </div>
+//       </div>
+//     </BrowserRouter>
+//   )
+// }
 
 export default App
