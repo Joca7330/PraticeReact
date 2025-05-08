@@ -2,27 +2,24 @@ import React, { useState } from 'react'
 import './SignInForm.css'
 import { IoIosEyeOff } from "react-icons/io";
 import { FaEye } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 
 const SignInForm = ({ onLogin }) => {
-
     const [showPasswordLogin, setShowPasswordLogin] = useState(false);
-
     const [showErrorLogin, setShowErrorLogin] = useState({
         email: '',
         password: ''
     })
     console.log('show errors:', showErrorLogin);
-
     const [formDataLogin, setFormDataLogin] = useState({
         email: '',
         password: ''
     });
     console.log('user input:', formDataLogin);
-
+    const navigateLogin = useNavigate();
     const handleValidationLogin = () => {
         const tempErrorsLogin = {};
-
         if (formDataLogin.email === '') {
             tempErrorsLogin.email = 'Email can not be blank'
         } if (formDataLogin.password === '') {
@@ -31,14 +28,12 @@ const SignInForm = ({ onLogin }) => {
         }
         setShowErrorLogin(tempErrorsLogin)
     }
-
     const handleChangeLogin = (e) => {
         const { name, value } = e.target
         setFormDataLogin(prevState => ({
             ...prevState, [name]: value
         }))
     }
-
     const togglePassword = () => {
         setShowPasswordLogin(prevState => !prevState)
     }
@@ -112,14 +107,13 @@ const SignInForm = ({ onLogin }) => {
                 </div>
                 <div className='signin-password-reset'>Forgot password?</div>
                 <button
-
                     type='submmit'
                     className='signin-submit-btn'>Sign In
                 </button>
                 <div className='signin-signup-link'>
                     <div className='signin-account-query'>Don't have an account?</div>
                     <div
-                        onClick={onLogin}
+                        onClick={() => navigateLogin('/signup')}
                         className='signin-signup-text'>
                         <div>Sign up</div>
                     </div>
