@@ -1,11 +1,13 @@
 
 import { React, useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import SignInForm from './forms/SignInForm'
 import SignUpForm from './forms/SignUpForm'
 import DetailsToggle from './conditional-rendering/AuthForms'
 import ToggleLogin from './conditional-rendering/ToggleLogin'
 import OneToggleLogin from './conditional-rendering/OneToggleLogin'
 import LoginForm from './test-forms/TestForm1'
+import NotFound from './forms/NotFound'
 
 
 
@@ -17,48 +19,18 @@ const App = () => {
   const handleLogOut = () => {
     setIsLoggedIn(false);
   }
-
-
   return (
-    <div className='backdrop'>
-      <div className='form-2-container'>
-        {!isLoggedIn ?
-          <div>
-            <SignInForm
-              isLoggedIn={isLoggedIn}
-              onLogin={handleLogIn} />
-          </div>
-          : <SignUpForm
-            onLogout={handleLogOut} />}
+    <BrowserRouter>
+      <div className='backdrop'>
+        <div className='form-2-container'>
+          <Routes>
+            <Route path='/signin' element={<SignInForm />} />
+            <Route path='/signup' element={<SignUpForm />} />
+            <Route path='/*' element={<NotFound />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   )
 }
-
-
-// function App() {
-//   const [isSignUp, setIsSignUp] = useState(false)
-//   const handleLoginSuccess = (userData) => {
-//     // Handle successful login (e.g., store user data, redirect)
-//     console.log('Login successful!', userData);
-//   };
-//   return (
-//     <div className="app">
-//       {isSignUp ?
-//         <div>
-//           <h1>Welcome to My App</h1>
-//           <LoginForm
-//             onLoginSuccess={handleLoginSuccess}
-//             buttonText="Sign In"
-//           />
-//         </div>
-//         :
-//         <FormValidation />
-//       }
-//     </div>
-//   );
-// }
-
-
-
 export default App

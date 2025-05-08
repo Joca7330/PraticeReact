@@ -3,6 +3,7 @@ import './SignUpForm.css'
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import { MdOutlineVisibilityOff } from "react-icons/md";
 import { FaEye } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 
 const SignUpForm = ({ onLogout }) => {
@@ -16,6 +17,7 @@ const SignUpForm = ({ onLogout }) => {
         password: '',
         confirmPassword: ''
     })
+    const navigateSignUp = useNavigate();
     // Checks if form is valid and display message in console when sign up button is clicked
     const handleSubmit = () => {
         if (handleValidation()) {
@@ -232,13 +234,14 @@ const SignUpForm = ({ onLogout }) => {
                     }
                 </div>
                 <button
+                    // On click handles validation and sbumits if error-free
                     onClick={handleSubmit}
                     className='signup-submit-btn'>Sign Up</button>
                 <button
                     className='signup-account-signin'>
                     <div className='signup-account-query'>Already have an account?</div>
                     <div
-                        onClick={onLogout}
+                        onClick={() => navigateSignUp('/signin')}
                         className='signup-signin-link'>
                         <div>Sign in</div>
                     </div>
