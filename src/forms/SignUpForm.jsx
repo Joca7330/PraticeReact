@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import './SignUpForm.css'
-import { MdOutlineCalendarMonth } from "react-icons/md";
 import { MdOutlineVisibilityOff } from "react-icons/md";
 import { FaEye } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 
 
-const SignUpForm = ({ onLogout }) => {
+const SignUpForm = () => {
     const [showPasswordSignUp, setShowPasswordSignUp] = useState(false)
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
     // Stores error messages for each input field
@@ -20,11 +19,7 @@ const SignUpForm = ({ onLogout }) => {
     const navigateSignUp = useNavigate();
     // Checks if form is valid and display message in console when sign up button is clicked
     const handleSubmit = () => {
-        if (handleValidation()) {
-            console.log('Form has been submitted');
-        } else {
-            console.log('Error submitting form');
-        }
+        handleValidation();
     }
     // Checks if user input is in valid format
     const handleValidation = () => {
@@ -33,40 +28,36 @@ const SignUpForm = ({ onLogout }) => {
         // Detects if there are any errors and sends to showErrors state
         const tempErrors = {};
         // Error messages are stored in tempErrors if fields are left blank
-        if (formData.username.length <= 3) {
-            tempErrors.username = 'Full name is too short'
-        }
         if (formData.username === '') {
             tempErrors.username = 'Full name can not be empty'
+        } else if (formData.username.length <= 3) {
+            tempErrors.username = 'Full name is too short'
         }
         if (formData.dateOfBirth === '') {
             tempErrors.dateOfBirth = 'Date of birth can not be empty'
         }
-        if (!emailRegex.test(formData.email)) {
-            tempErrors.email = 'Please enter a valid email address (name@example.com)'
-        }
         if (formData.email === '') {
             tempErrors.email = 'Email can not be empty'
-        }
-        if (!passRegex.test(formData.password)) {
-            tempErrors.password = 'Password must be 8+ chars with A-Z, a-z, 0-9, and symbol '
+        } else if (!emailRegex.test(formData.email)) {
+            tempErrors.email = 'Please enter a valid email address (name@example.com)'
         }
         if (formData.password === '') {
             tempErrors.password = 'Password can not be empty'
-        }
-        if (formData.password !== formData.confirmPassword) {
-            tempErrors.confirmPassword = 'Passwords do not match'
+        } else if (!passRegex.test(formData.password)) {
+            tempErrors.password = 'Password must be 8+ chars with A-Z, a-z, 0-9, and symbol '
         }
         if (formData.confirmPassword === '') {
             tempErrors.confirmPassword = 'Confirm password can not be empty'
         }
+        if (formData.password !== formData.confirmPassword) {
+            tempErrors.confirmPassword = 'Passwords do not match'
+        }
         // Updates showErrors stae with error messages
         setShowError(tempErrors)
-        console.log('temp errors:', tempErrors);
         if (Object.keys(tempErrors).length === 0) {
-            return true
+            console.log('Form is submitted');
         } else {
-            return false
+            console.log('Error submitting form');
         }
     }
     const [formData, setFormData] = useState({

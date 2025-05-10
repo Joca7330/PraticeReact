@@ -4,28 +4,45 @@ import { IoIosEyeOff } from "react-icons/io";
 import { FaEye } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 
-const SignInForm = ({ onLogin }) => {
+const SignInForm = () => {
     const [showPasswordLogin, setShowPasswordLogin] = useState(false);
+    // Stores error messages for each input field
     const [showErrorLogin, setShowErrorLogin] = useState({
         email: '',
         password: ''
     })
-    console.log('show errors:', showErrorLogin);
     const [formDataLogin, setFormDataLogin] = useState({
         email: '',
         password: ''
     });
-    console.log('user input:', formDataLogin);
     const navigateLogin = useNavigate()
+    const handleSubmit = () => {
+        handleValidationLogin();
+    }
+    // Checks if user input is in valid format
     const handleValidationLogin = () => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
         const tempErrorsLogin = {};
         if (formDataLogin.email === '') {
             tempErrorsLogin.email = 'Email can not be blank'
-        } if (formDataLogin.password === '') {
+        } else if (formDataLogin.email.length <= 4) {
+            tempErrorsLogin.email = 'Email is too short'
+        } else if (!emailRegex.test(formDataLogin.email)) {
+            tempErrorsLogin.email = 'Please enter a valid email address (name@example.com)'
+        }
+        if (formDataLogin.password === '') {
             tempErrorsLogin.password = 'Password can not be blank'
-            console.log('temp errors:', tempErrorsLogin);
+        } else if (!passRegex.test(formDataLogin.password)) {
+            tempErrorsLogin.password = 'Password must be 8+ chars with A-Z, a-z, 0-9, and symbol '
         }
         setShowErrorLogin(tempErrorsLogin)
+        if (Object.keys(tempErrorsLogin).length === 0) {
+            console.log('Form is submitted');
+        } else {
+            console.log('Error submitting form');
+
+        }
     }
 
     const handleChangeLogin = (e) => {
@@ -54,7 +71,6 @@ const SignInForm = ({ onLogin }) => {
                         placeholder='john@email.com'
                         name='email'
                         onChange={handleChangeLogin}
-                        onBlur={handleValidationLogin}
                     />
                     <div className='error-text'>
                         {showErrorLogin.email
@@ -74,7 +90,6 @@ const SignInForm = ({ onLogin }) => {
                             placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
                             name='password'
                             onChange={handleChangeLogin}
-                            onBlur={handleValidationLogin}
                         />
                         :
                         <input
@@ -84,7 +99,6 @@ const SignInForm = ({ onLogin }) => {
                             placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
                             name='password'
                             onChange={handleChangeLogin}
-                            onBlur={handleValidationLogin}
                         />
                     }
                     <div className='error-text'>
@@ -108,6 +122,7 @@ const SignInForm = ({ onLogin }) => {
                 </div>
                 <div className='signin-password-reset'>Forgot password?</div>
                 <button
+                    onClick={handleSubmit}
                     type='submmit'
                     className='signin-submit-btn'>Sign In
                 </button>
