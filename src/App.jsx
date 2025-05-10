@@ -9,14 +9,6 @@ import LoginForm from './test-forms/TestForm1'
 import NotFound from './test-forms/NotFound'
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
-
-  const handleLogIn = () => {
-    setIsLoggedIn(true);
-  }
-  const handleLogOut = () => {
-    setIsLoggedIn(false);
-  }
   return (
     <BrowserRouter>
       <div className="backdrop">

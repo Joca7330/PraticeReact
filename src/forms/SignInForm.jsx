@@ -11,17 +11,20 @@ const SignInForm = ({ onLogin }) => {
         email: '',
         password: ''
     })
-    console.log('show errors:', showErrorLogin);
     const [formDataLogin, setFormDataLogin] = useState({
         email: '',
         password: ''
     });
-    console.log('user input:', formDataLogin);
     const navigateLogin = useNavigate();
+    // Checks if the form is valid and logs a message
+    const handleSubmit = () => {
+        handleValidationLogin()
+    }
     const handleValidationLogin = () => {
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
-        const emailRegex =  /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const tempErrorsLogin = {};
+
         if (formDataLogin.email === '') {
             tempErrorsLogin.email = 'Email can not be blank'
         } else if (formDataLogin.email.length <= 3) {
@@ -35,6 +38,12 @@ const SignInForm = ({ onLogin }) => {
             tempErrorsLogin.password = 'Must be a-z, number, special character, and correct format'
         }
         setShowErrorLogin(tempErrorsLogin)
+        if (Object.keys(tempErrorsLogin).length === 0) {
+            console.log('Form submitted');
+        } else {
+            console.log('Error submmitting form');
+
+        }
     }
     const handleChangeLogin = (e) => {
         const { name, value } = e.target
@@ -61,7 +70,6 @@ const SignInForm = ({ onLogin }) => {
                         placeholder='john@email.com'
                         name='email'
                         onChange={handleChangeLogin}
-                        onBlur={handleValidationLogin}
                     />
                     <div className='error-text'>
                         {showErrorLogin.email
@@ -81,7 +89,6 @@ const SignInForm = ({ onLogin }) => {
                             placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
                             name='password'
                             onChange={handleChangeLogin}
-                            onBlur={handleValidationLogin}
                         />
                         :
                         <input
@@ -91,7 +98,6 @@ const SignInForm = ({ onLogin }) => {
                             placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
                             name='password'
                             onChange={handleChangeLogin}
-                            onBlur={handleValidationLogin}
                         />
                     }
                     <div className='error-text'>
@@ -116,6 +122,7 @@ const SignInForm = ({ onLogin }) => {
                 <div className='signin-password-reset'>Forgot password?</div>
                 <button
                     type='submmit'
+                    onClick={handleSubmit}
                     className='signin-submit-btn'>Sign In
                 </button>
                 <div className='signin-signup-link'>

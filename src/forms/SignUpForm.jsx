@@ -40,11 +40,7 @@ const SignUpForm = ({ onLogout }) => {
     const navigate = useNavigate()
     // Checks if form is valid and display message in console when sign up button is clicked
     const handleSubmit = () => {
-        if (handleValidation()) {
-            console.log('Form has been submitted');
-        } else {
-            console.log('Error submitting form');
-        }
+        handleValidation()
     }
     // Checks if user input is in valid format
     const handleValidation = () => {
@@ -53,7 +49,6 @@ const SignUpForm = ({ onLogout }) => {
         // Detects if there are any errors and sends to showErrors state
         const tempErrors = {};
         // Error messages are stored in tempErrors if fields are left blank
-
         if (formData.username === '') {
             tempErrors.username = 'Full name can not be empty'
         } else if (formData.username.length <= 3) {
@@ -74,15 +69,18 @@ const SignUpForm = ({ onLogout }) => {
         }
         if (formData.confirmPassword === '') {
             tempErrors.confirmPassword = 'Confirm password can not be empty'
-        }else if (formData.password !== formData.confirmPassword) {
+        } else if (formData.password !== formData.confirmPassword) {
             tempErrors.confirmPassword = 'Passwords do not match'
         }
+
         // Updates showErrors stae with error messages
         setShowError(tempErrors)
         if (Object.keys(tempErrors).length === 0) {
-            return true
+            console.log('Form submmitted');
+
         } else {
-            return false
+            console.log('Error submitting form');
+
         }
     }
 
