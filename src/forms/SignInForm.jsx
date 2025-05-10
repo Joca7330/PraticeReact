@@ -19,12 +19,20 @@ const SignInForm = ({ onLogin }) => {
     console.log('user input:', formDataLogin);
     const navigateLogin = useNavigate();
     const handleValidationLogin = () => {
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+        const emailRegex =  /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const tempErrorsLogin = {};
         if (formDataLogin.email === '') {
             tempErrorsLogin.email = 'Email can not be blank'
-        } if (formDataLogin.password === '') {
+        } else if (formDataLogin.email.length <= 3) {
+            tempErrorsLogin.email = 'Email is too short'
+        } else if (!emailRegex.test(formDataLogin.email)) {
+            tempErrorsLogin.email = 'Email is not valid'
+        }
+        if (formDataLogin.password === '') {
             tempErrorsLogin.password = 'Password can not be blank'
-            console.log('temp errors:', tempErrorsLogin);
+        } else if (!passwordRegex.test(formDataLogin.password)) {
+            tempErrorsLogin.password = 'Must be a-z, number, special character, and correct format'
         }
         setShowErrorLogin(tempErrorsLogin)
     }
