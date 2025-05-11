@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import './SignUpForm.css'
 import { MdOutlineVisibilityOff } from "react-icons/md";
 import { FaEye } from "react-icons/fa";
@@ -16,7 +17,6 @@ const SignUpForm = () => {
         password: '',
         confirmPassword: ''
     })
-    const navigateSignUp = useNavigate();
     // Checks if form is valid and display message in console when sign up button is clicked
     const handleSubmit = () => {
         handleValidation();
@@ -60,6 +60,7 @@ const SignUpForm = () => {
             console.log('Error submitting form');
         }
     }
+    // Stores the value of what the user types into the input fields
     const [formData, setFormData] = useState({
         username: '',
         dateOfBirth: '',
@@ -74,7 +75,6 @@ const SignUpForm = () => {
             ...prevState, [name]: value
         }))
     }
-    // Get the value of what the user types into the input field
     const toggleShowPassword = () => {
         setShowPasswordSignUp(prevState => !prevState)
     }
@@ -231,11 +231,7 @@ const SignUpForm = () => {
                 <button
                     className='signup-account-signin'>
                     <div className='signup-account-query'>Already have an account?</div>
-                    <div
-                        onClick={() => navigateSignUp('/signin')}
-                        className='signup-signin-link'>
-                        <div>Sign in</div>
-                    </div>
+                    <Link className='signup-signin-link' to={'/signin'}>Sign in</Link>
                 </button>
             </div>
         </div>

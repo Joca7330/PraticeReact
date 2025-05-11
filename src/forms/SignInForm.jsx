@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './SignInForm.css'
 import { IoIosEyeOff } from "react-icons/io";
 import { FaEye } from "react-icons/fa";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignInForm = () => {
     const [showPasswordLogin, setShowPasswordLogin] = useState(false);
@@ -11,11 +11,13 @@ const SignInForm = () => {
         email: '',
         password: ''
     })
+    // Store the values of email and password
     const [formDataLogin, setFormDataLogin] = useState({
         email: '',
         password: ''
     });
-    const navigateLogin = useNavigate()
+    const navigate = useNavigate()
+    // Onlcick checks if form is valid and logs message in console
     const handleSubmit = () => {
         handleValidationLogin();
     }
@@ -44,14 +46,14 @@ const SignInForm = () => {
 
         }
     }
-
+    // Updates formData with user input
     const handleChangeLogin = (e) => {
         const { name, value } = e.target
         setFormDataLogin(prevState => ({
             ...prevState, [name]: value
         }))
     }
-
+    // Get the value
     const togglePassword = () => {
         setShowPasswordLogin(prevState => !prevState)
     }
@@ -128,11 +130,7 @@ const SignInForm = () => {
                 </button>
                 <div className='signin-signup-link'>
                     <div className='signin-account-query'>Don't have an account?</div>
-                    <div
-                        onClick={() => navigateLogin('/signup')}
-                        className='signin-signup-text'>
-                        <div>Sign up</div>
-                    </div>
+                    <Link className='signin-signup-text' to={'/signup'}>Sign Up</Link>
                 </div>
             </div>
         </div>

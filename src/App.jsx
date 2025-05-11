@@ -1,6 +1,7 @@
 
 import { React, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import SignInForm from './forms/SignInForm'
 import SignUpForm from './forms/SignUpForm'
 import NotFound from './forms/NotFound'
@@ -8,13 +9,6 @@ import NotFound from './forms/NotFound'
 
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
-  const handleLogIn = () => {
-    setIsLoggedIn(true);
-  }
-  const handleLogOut = () => {
-    setIsLoggedIn(false);
-  }
   return (
     <BrowserRouter>
       <div className='backdrop'>
