@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import SignInForm from './forms/SignInForm'
 import SignUpForm from './forms/SignUpForm'
 import NotFound from './forms/NotFound'
-
+import TodoCards from './TodoCards'
 
 
 const App = () => {
@@ -14,6 +14,7 @@ const App = () => {
       <div className='backdrop'>
         <div className='form-2-container'>
           <Routes>
+            <Route path='/todo' element={<TodoCards />} />
             <Route path='/signin' element={<SignInForm />} />
             <Route path='/signup' element={<SignUpForm />} />
             <Route path='/*' element={<NotFound />} />
