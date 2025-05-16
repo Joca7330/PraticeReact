@@ -1,0 +1,35 @@
+.todo-container {
+    border: solid red 1px;
+    background-color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* Reduced from 17px */ 
+    row-gap: 10px;
+    column-gap: 29px;
+    /* Added to control vertical spacing */
+}
+
+.todo-container .todo {
+    border: solid blue 1px;
+    height: 261px;
+    width: 239px;
+    margin: 0;
+    /* Ensure no additional margins */
+}
+.todo-container .container{
+    border: olive solid 1px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* Reduced from 17px */ 
+    /* row-gap: 10px; */
+    /* column-gap: 29px; */
+}
