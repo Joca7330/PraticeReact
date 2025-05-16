@@ -1,0 +1,17 @@
+* {
+    /* border: solid green 1px; */
+    padding: 10px;
+}
+
+.todo-container {
+    border: solid orange 1px;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 20px;
+}
+.todo{
+    border: blue solid 1px;
+    height: 300px;
+width: 300px;
+}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import './TodoCards.css'
 
 const TodoCards = () => {
   const [showTodos, setShowTodos] = useState([]);
@@ -9,7 +10,10 @@ const TodoCards = () => {
       try {
         const response = await fetch('https://jsonplaceholder.typicode.com/todos')
         const data = await response.json()
-        setShowTodos(data)
+        const limitedData = data.slice(0, 10)
+        console.log('limited data', limitedData);
+
+        setShowTodos(limitedData)
       }
       catch (error) {
         console.log('Error fetching todos', error);
@@ -19,13 +23,21 @@ const TodoCards = () => {
   }, [])
 
   return (
-    <div>
-      <div>
+    <div className='todo-container'>
         {showTodos.map((todo) => (
-          todo.title
+          <div className='todo'>
+            <div className='title'>
+              {todo.title}
+            </div>
+            <div className='id'>
+              {todo.id}
+            </div>
+            <div className='complete'>
+              {/* {todo.complete} */}
+            </div>
+          </div>
         ))}
       </div>
-    </div>
   )
 }
 
